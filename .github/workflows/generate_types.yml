@@ -7,11 +7,30 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-          check-latest: true
+          check-latest: true   
       - run: |
-          git clone https://github.com/binary-com/websockets.git
-          cd websockets
-          git checkout HEAD
-          npm i json-schema-to-typescript
-          ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json"
+        # Create a folder for the package that will be published.
+        mkdir types
+      - run: |
+        # Checkout the upstream binary-com/websockets repo
+        # and convert the JSON schema to TypeScript types/interfaces.
+        git clone https://github.com/binary-com/websockets.git
+        cd websockets
+        git checkout HEAD
+      - run: |
+        # Convert schema to types/interfaces
+        cd websockets
+        npm i json-schema-to-typescript
+        ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > types/index.d.ts
+      - run: |
+        # Compare the hash of the new "index.d.t.s" with the existing one.
+        cd websockets
+        git file-hash types/index.d.ts
+
+
+
+
+
+
+          
           
