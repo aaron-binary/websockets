@@ -6,7 +6,9 @@ jobs:
     steps:
       - id: step1
       - uses: actions/checkout@v2
-      - run: ls && echo ::set-output name=declarations_hash::"${git hash-object}"
+      - run: |
+          ls && echo ::set-output name=declarations_hash::"${git hash-object}"
+
       - id: step2
       - uses: actions/setup-node@v2
         with:
