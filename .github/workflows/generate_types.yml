@@ -42,4 +42,7 @@ jobs:
             cp ${GITHUB_WORKSPACE}/websockets/index.d.ts index.d.ts
 
             ls
+
+            echo "----"
+            cat package.json
           fi
