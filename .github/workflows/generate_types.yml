@@ -9,8 +9,5 @@ jobs:
           node-version: '12'
           check-latest: true
       - run: |
-          git clone https://github.com/binary-com/websockets.git
-          git checkout HEAD
-          npm i json-schema-to-typescript
-          ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json"
+          git clone https://github.com/binary-com/websockets.git && git checkout HEAD && npm i json-schema-to-typescript && ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" &&
           
