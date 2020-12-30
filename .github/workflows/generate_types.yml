@@ -27,12 +27,15 @@ jobs:
           ../node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > index.d.ts
           echo ::set-output name=new_declarations_hash::"$(git hash-object index.d.ts)"
 
-      - name: Generate new declarations file.
-        id: step4
-        run: |
-          if [ ${{ steps.step2.outputs.old_declarations_hash }} = ${{ steps.step3.outputs.new_declarations_hash }} ]
+          if [ ${{ steps.step2.outputs.old_declarations_hash }} = $(git hash-object index.d.ts) ]
           then
             echo "Hashes are the same. Aborting."
           else
             echo "Hashes are different. I will publish a new version."
+
+            cd node_modules/@deriv/types
+            npm version patch
+            rm index.d.ts
+            cp ../index.d.ts index.d.ts
+            ls
           fi
