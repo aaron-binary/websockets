@@ -24,7 +24,7 @@ jobs:
           git clone https://github.com/binary-com/websockets.git
           cd websockets
           git checkout HEAD
-          ../node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > index.d.ts
+          ${GITHUB_WORKSPACE}/node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > index.d.ts
           echo ::set-output name=new_declarations_hash::"$(git hash-object index.d.ts)"
 
           if [ ${{ steps.step2.outputs.old_declarations_hash }} = $(git hash-object index.d.ts) ]
@@ -35,10 +35,10 @@ jobs:
 
             ls
 
-            cd ../node_modules/@deriv/types
+            cd ${GITHUB_WORKSPACE}/node_modules/@deriv/types
             npm version patch
             rm index.d.ts
-            cp ../websockets/index.d.ts index.d.ts
+            cp ${GITHUB_WORKSPACE}/index.d.ts index.d.ts
 
             ls
           fi
