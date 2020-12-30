@@ -25,10 +25,10 @@ jobs:
           cd websockets
           git checkout HEAD
           ../node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > index.d.ts
-          echo ::set-output name=old_declarations_hash::"$(git hash-object index.d.ts)"
+          echo ::set-output name=new_declarations_hash::"$(git hash-object index.d.ts)"
 
       - name: Generate new declarations file.
         id: step4
         run: |
-          echo ${{ steps.step2.outputs.declarations_hash }}
-          echo ${{ steps.step3.outputs.declarations_hash }}
+          echo ${{ steps.step2.outputs.old_declarations_hash }}
+          echo ${{ steps.step3.outputs.new_declarations_hash }}
