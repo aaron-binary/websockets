@@ -35,9 +35,10 @@ jobs:
 
             ls
 
-            cd node_modules/@deriv/types
+            cd ../node_modules/@deriv/types
             npm version patch
             rm index.d.ts
-            cp ../index.d.ts index.d.ts
+            cp ../websockets/index.d.ts index.d.ts
+
             ls
           fi
