@@ -10,7 +10,6 @@ jobs:
           check-latest: true
       # - run: |
       #     chmod +x "${GITHUB_WORKSPACE}/.github/generate_types.sh"
-      - run: |
-          ls
-          # Install dependencies
-          sh ${GITHUB_WORKSPACE}/.github/generate_types.sh
+      - run: ls
+      - run: sh ${GITHUB_WORKSPACE}/.github/generate_types.sh
+          
