@@ -16,7 +16,7 @@ jobs:
         run: |
           npm i json-schema-to-typescript
           npm i @deriv/types@latest
-          echo ::set-output name=old_declarations_hash::"$(git hash-object ./node_modules/@deriv/types/output.d.ts)"
+          echo ::set-output name=old_declarations_hash::"$(git hash-object ./node_modules/@deriv/types/index.d.ts)"
 
       - name: Generate declarations file from upstream
         id: step3
