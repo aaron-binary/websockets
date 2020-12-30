@@ -6,12 +6,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: gh-pages
+          ref: binary-com/websockets
+          path: websockets
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
           check-latest: true
-      - run: npm i json-schema-to-typescript
-      - run: ls
-      - run: git checkout HEAD
-      - run: ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json > index.d.ts
+      - run: |
+          # Install dependencies
+          "${GITHUB_WORKSPACE}/.github/generate_types.sh
