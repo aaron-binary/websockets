@@ -39,7 +39,7 @@ jobs:
             cd ${GITHUB_WORKSPACE}/node_modules/@deriv/types
             npm version patch
             rm index.d.ts
-            cp ${GITHUB_WORKSPACE}/index.d.ts index.d.ts
+            cp ${GITHUB_WORKSPACE}/websockets/index.d.ts index.d.ts
 
             ls
           fi
