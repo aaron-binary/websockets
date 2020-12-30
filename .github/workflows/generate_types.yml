@@ -21,6 +21,7 @@ jobs:
       - name: Generate declarations file from upstream
         id: step3
         run: |
+          ls
           git clone https://github.com/binary-com/websockets.git
           cd websockets
           git checkout HEAD
