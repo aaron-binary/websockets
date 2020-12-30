@@ -20,19 +20,25 @@ jobs:
       - name: Generate new declarations file.
         id: step3
         run: |
-          # Create a folder for the package that will be published.
+          echo ${{ steps.step2.outputs.declarations_hash }}
           mkdir ./types
+
 
           # Checkout the upstream binary-com/websockets repo
           # and convert the JSON schema to TypeScript types/interfaces.
+
           git clone https://github.com/binary-com/websockets.git
           cd websockets
           git checkout HEAD
 
+
           # Convert schema to types/interfaces
+
           npm i json-schema-to-typescript
           ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > ../types/index.d.ts
 
+
           # Compare the hash of the new "index.d.t.s" with the existing one.
+
           git hash-object ../types/index.d.ts
           echo ${{ steps.step2.outputs.declarations_hash }}
