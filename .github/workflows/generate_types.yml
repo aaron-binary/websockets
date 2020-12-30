@@ -1,0 +1,16 @@
+name: generate-api-types
+on: [push]
+jobs: 
+  generate-types:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+          check-latest: true
+      - run: npm i json-schema-to-typescript
+      - run: git checkout HEAD
+      - run: ./node_modules/.bin/json2ts --input "config/v3/**/[!example]*.json > index.d.ts
