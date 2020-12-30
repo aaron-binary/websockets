@@ -8,9 +8,9 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
-      # - run: |
-      #     chmod +x "${GITHUB_WORKSPACE}/.github/generate_types.sh"
       - run: git clone https://github.com/binary-com/websockets.git
-      - run: ls
-      - run: sh ${GITHUB_WORKSPACE}/.github/generate_types.sh
+      - run: cd websockets
+      - run: git checkout HEAD
+      - run: npm i json-schema-to-typescript
+      - run: ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json"
           
