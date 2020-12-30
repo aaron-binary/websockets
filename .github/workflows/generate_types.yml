@@ -20,7 +20,7 @@ jobs:
 
           # Convert schema to types/interfaces
           npm i json-schema-to-typescript
-          ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > types/index.d.ts
+          ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > ../types/index.d.ts
 
           # Compare the hash of the new "index.d.t.s" with the existing one.
-          git file-hash types/index.d.ts
+          git file-hash ../types/index.d.ts
