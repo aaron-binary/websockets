@@ -11,5 +11,6 @@ jobs:
       # - run: |
       #     chmod +x "${GITHUB_WORKSPACE}/.github/generate_types.sh"
       - run: |
+          ls
           # Install dependencies
           sh ${GITHUB_WORKSPACE}/.github/generate_types.sh
