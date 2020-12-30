@@ -35,6 +35,7 @@ jobs:
           # Convert schema to types/interfaces
 
           npm i json-schema-to-typescript
+          pwd
           ls
           ./node_modules/.bin/json2ts --input "./config/v3/**/[!example]*.json" > ../types/index.d.ts
 
