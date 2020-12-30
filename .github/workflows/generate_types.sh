@@ -1,3 +1,4 @@
+#!/bin/bash
 git clone https://github.com/binary-com/websockets.git
 cd websockets
 git checkout HEAD
