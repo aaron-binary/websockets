@@ -23,6 +23,9 @@ jobs:
           echo ${{ steps.step2.outputs.declarations_hash }}
           mkdir ./types
 
+          pwd
+          ls
+
 
           # Checkout the upstream binary-com/websockets repo
           # and convert the JSON schema to TypeScript types/interfaces.
