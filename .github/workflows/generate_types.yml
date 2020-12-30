@@ -33,6 +33,8 @@ jobs:
           else
             echo "Hashes are different. I will publish a new version."
 
+            ls
+
             cd node_modules/@deriv/types
             npm version patch
             rm index.d.ts
