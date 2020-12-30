@@ -4,20 +4,21 @@ jobs:
   generate-types:
     runs-on: 'ubuntu-latest'
     steps:
-      - id: step1
-        uses: actions/checkout@v2
-
-      - id: step2
-        run: |
-          ls && echo ::set-output name=declarations_hash::"${git hash-object}"
-
-      - id: step3
+      - name: Setup node
+        id: step1
         uses: actions/setup-node@v2
         with:
           node-version: '12'
           check-latest: true
 
-      - id: step4
+      - name: Generate hash of existing package
+        id: step2
+        run: |
+          npm i @deriv/types@latest
+          echo ::set-output name=declarations_hash::"$(git hash-object ./node_modules/@deriv/types/output.d.ts)"
+
+      - name: Generate new declarations file.
+      - id: step3
         run: |
           # Create a folder for the package that will be published.
           mkdir ./types
@@ -34,4 +35,4 @@ jobs:
 
           # Compare the hash of the new "index.d.t.s" with the existing one.
           git hash-object ../types/index.d.ts
-          echo ${{ steps.step1.outputs.some_output }}
+          echo ${{ steps.step2.outputs.declarations_hash }}
