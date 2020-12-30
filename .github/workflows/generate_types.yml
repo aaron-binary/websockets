@@ -10,7 +10,7 @@ jobs:
           check-latest: true   
       - run: |
         # Create a folder for the package that will be published.
-        mkdir types
+        mkdir ./types
 
         # Checkout the upstream binary-com/websockets repo
         # and convert the JSON schema to TypeScript types/interfaces.
