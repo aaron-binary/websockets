@@ -11,6 +11,7 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
+      - run: ls
       - run: npm i json-schema-to-typescript
       - run: git checkout HEAD
       - run: ./node_modules/.bin/json2ts --input "config/v3/**/[!example]*.json > index.d.ts
