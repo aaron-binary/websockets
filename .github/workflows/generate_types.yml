@@ -6,16 +6,18 @@ jobs:
     steps:
       - id: step1
         uses: actions/checkout@v2
+
+      - id: step2
         run: |
           ls && echo ::set-output name=declarations_hash::"${git hash-object}"
 
-      - id: step2
+      - id: step3
         uses: actions/setup-node@v2
         with:
           node-version: '12'
           check-latest: true
 
-      - id: step3
+      - id: step4
         run: |
           # Create a folder for the package that will be published.
           mkdir ./types
