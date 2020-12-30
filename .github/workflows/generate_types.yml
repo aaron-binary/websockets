@@ -18,7 +18,7 @@ jobs:
           echo ::set-output name=declarations_hash::"$(git hash-object ./node_modules/@deriv/types/output.d.ts)"
 
       - name: Generate new declarations file.
-      - id: step3
+        id: step3
         run: |
           # Create a folder for the package that will be published.
           mkdir ./types
