@@ -30,5 +30,9 @@ jobs:
       - name: Generate new declarations file.
         id: step4
         run: |
-          echo ${{ steps.step2.outputs.old_declarations_hash }}
-          echo ${{ steps.step3.outputs.new_declarations_hash }}
+          if [ ${{ steps.step2.outputs.old_declarations_hash }} = ${{ steps.step3.outputs.new_declarations_hash }} ]
+          then
+            echo "Hashes are the same. Aborting."
+          else
+            echo "Hashes are different. I will publish a new version."
+          fi
