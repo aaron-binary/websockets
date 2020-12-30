@@ -8,6 +8,8 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
+      # - run: |
+      #     chmod +x "${GITHUB_WORKSPACE}/.github/generate_types.sh"
       - run: |
           # Install dependencies
-          "${GITHUB_WORKSPACE}/.github/generate_types.sh
+          sh ${GITHUB_WORKSPACE}/.github/generate_types.sh
