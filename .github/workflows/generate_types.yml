@@ -10,6 +10,9 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
+          registry-url: 'https://registry.npmjs.org'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: Generate hash of existing package
         id: step2
@@ -47,5 +50,3 @@ jobs:
             # Publish the package with a new version.
             npm publish
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
